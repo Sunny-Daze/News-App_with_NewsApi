@@ -7,50 +7,109 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <NavBar />
         <BrowserRouter>
-          <Routes
-            path="/"
-            element={<News pageSize={6} country="in" category="general" />}
-          >
-            <Route
-              index
-              element={<News pageSize={6} country="in" category="general" />}
-            />
-            <Route
-              path="Business"
-              element={<News pageSize={6} country="in" category="Business" />}
-            />
-            <Route
-              path="Entertainment"
-              element={
-                <News pageSize={6} country="in" category="Entertainment" />
-              }
-            />
-            <Route
-              path="General"
-              element={<News pageSize={6} country="in" category="General" />}
-            />
-            <Route
-              path="Health"
-              element={<News pageSize={6} country="in" category="Health" />}
-            />
-            <Route
-              path="Sports"
-              element={<News pageSize={6} country="in" category="Sports" />}
-            />
-            <Route
-              path="Science"
-              element={<News pageSize={6} country="in" category="Science" />}
-            />
-            <Route
-              path="Technology"
-              element={<News pageSize={6} country="in" category="Technology" />}
-            />
-            <Route
-              path="ContactMe"
-              element={<News pageSize={6} country="in" category="ContactMe" />}
-            />
+          <Routes>
+            <Route path="/" element={<NavBar />}>
+              <Route
+                index
+                element={
+                  <News
+                    key="general"
+                    pageSize={6}
+                    country="in"
+                    category="general"
+                  />
+                }
+              />
+              <Route
+                path="Business"
+                element={
+                  <News
+                    key="Business"
+                    pageSize={6}
+                    country="in"
+                    category="Business"
+                  />
+                }
+              />
+              <Route
+                path="Entertainment"
+                element={
+                  <News
+                    key="Entertainment"
+                    pageSize={6}
+                    country="in"
+                    category="Entertainment"
+                  />
+                }
+              />
+              <Route
+                path="General"
+                element={
+                  <News
+                    key="General"
+                    pageSize={6}
+                    country="in"
+                    category="General"
+                  />
+                }
+              />
+              <Route
+                path="Health"
+                element={
+                  <News
+                    key="Health"
+                    pageSize={6}
+                    country="in"
+                    category="Health"
+                  />
+                }
+              />
+              <Route
+                path="Sports"
+                element={
+                  <News
+                    key="Sports"
+                    pageSize={6}
+                    country="in"
+                    category="Sports"
+                  />
+                }
+              />
+              <Route
+                path="Science"
+                element={
+                  <News
+                    key="Science"
+                    pageSize={6}
+                    country="in"
+                    category="Science"
+                  />
+                }
+              />
+              <Route
+                path="Technology"
+                element={
+                  <News
+                    key="Technology"
+                    pageSize={6}
+                    country="in"
+                    category="Technology"
+                  />
+                }
+              />
+              <Route
+                path="ContactMe"
+                element={
+                  <News
+                    key="ContactMe"
+                    pageSize={6}
+                    country="in"
+                    category="ContactMe"
+                  />
+                }
+              />
+            </Route>
           </Routes>
         </BrowserRouter>
       </>
