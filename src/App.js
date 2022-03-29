@@ -15,7 +15,7 @@ export default class App extends Component {
                 element={
                   <News
                     key="general"
-                    pageSize={6}
+                    pageSize={9}
                     country="in"
                     category="general"
                   />
@@ -26,7 +26,7 @@ export default class App extends Component {
                 element={
                   <News
                     key="Business"
-                    pageSize={6}
+                    pageSize={9}
                     country="in"
                     category="Business"
                   />
@@ -37,7 +37,7 @@ export default class App extends Component {
                 element={
                   <News
                     key="Entertainment"
-                    pageSize={6}
+                    pageSize={9}
                     country="in"
                     category="Entertainment"
                   />
@@ -48,7 +48,7 @@ export default class App extends Component {
                 element={
                   <News
                     key="General"
-                    pageSize={6}
+                    pageSize={9}
                     country="in"
                     category="General"
                   />
@@ -59,7 +59,7 @@ export default class App extends Component {
                 element={
                   <News
                     key="Health"
-                    pageSize={6}
+                    pageSize={9}
                     country="in"
                     category="Health"
                   />
@@ -70,7 +70,7 @@ export default class App extends Component {
                 element={
                   <News
                     key="Sports"
-                    pageSize={6}
+                    pageSize={9}
                     country="in"
                     category="Sports"
                   />
@@ -81,7 +81,7 @@ export default class App extends Component {
                 element={
                   <News
                     key="Science"
-                    pageSize={6}
+                    pageSize={9}
                     country="in"
                     category="Science"
                   />
@@ -92,7 +92,7 @@ export default class App extends Component {
                 element={
                   <News
                     key="Technology"
-                    pageSize={6}
+                    pageSize={9}
                     country="in"
                     category="Technology"
                   />
@@ -103,7 +103,7 @@ export default class App extends Component {
                 element={
                   <News
                     key="ContactMe"
-                    pageSize={6}
+                    pageSize={9}
                     country="in"
                     category="ContactMe"
                   />

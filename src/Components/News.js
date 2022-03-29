@@ -58,7 +58,7 @@ export default class News extends Component {
 
   render() {
     return (
-      <div style={{backgroundColor : "goldenRod"}}>
+      <div>
         <div className="container my-3">
           <h1 className="text-center">News App bitch</h1>
           {this.state.loading && <Spinner />}
