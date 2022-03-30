@@ -1,88 +1,89 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-export default class News extends Component {
-  capitilizeText = (s) => {
+export default function News(props) {
+  const capitilizeText = (s) => {
     return s[0].toUpperCase() + s.slice(1);
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: [],
-      loading: false,
-      page: 1,
-      totalResults: 0,
-    };
-    document.title = `News App - ${this.capitilizeText(this.props.category)}`;
-  }
+  const [articles, setarticles] = useState([]);
+  const [loading, setloading] = useState(false);
+  const [page, setpage] = useState(1);
+  const [totalResults, settotalResults] = useState(0);
 
-  async componentDidMount() {
-    this.props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.api}&page=1&pagesize=${this.props.pageSize}`;
-    this.setState({ loading: true });
+  const fetchNews = async () => {
+    props.setProgress(10);
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.api}&page=1&pagesize=${props.pageSize}`;
+    setloading(true);
     let data = await fetch(url);
-    this.props.setProgress(50);
+    props.setProgress(50);
     // console.log(data)
     let parsedData = await data.json();
     // console.log(parsedData);
-    this.props.setProgress(75);
-    this.setState({
-      articles: parsedData.articles,
-      totalResults: parsedData.totalResults,
-      loading: false,
-    });
-    this.props.setProgress(100);
-  }
-
-  fetchMoreData = async () => {
-    this.setState({
-      page: this.state.page + 1,
-    });
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.api}&page=${this.state.page}&pagesize=${this.props.pageSize}`;
-    let data = await fetch(url);
-    // console.log(data)
-    let parsedData = await data.json();
-    // console.log(parsedData);
-    this.setState({
-      articles: this.state.articles.concat(parsedData.articles),
-      totalResults: parsedData.totalResults,
-    });
+    props.setProgress(75);
+    setarticles(parsedData.articles);
+    settotalResults(parsedData.totalResults);
+    setloading(false);
+    props.setProgress(100);
   };
 
-  render() {
-    return (
-      <>
-        <h1 className="text-center">News App bitch</h1>
-        {this.state.loading && <Spinner />}
-        <InfiniteScroll
-          dataLength={this.state.articles.length}
-          next={this.fetchMoreData}
-          hasMore={this.state.articles.length !== this.state.totalResults}
-          loader={<Spinner />}
-        >
-          <div className="container">
-            <div className="row">
-              {this.state.articles.map((element) => {
-                return (
-                  <div className="col-md-4" key={element.url}>
-                    <NewsItem
-                      title={element.title}
-                      description={element.description}
-                      imageurl={element.urlToImage}
-                      newsurl={element.url}
-                      author={element.author}
-                      date={element.publishedAt}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+  useEffect(() => {
+    document.title = `News App - ${capitilizeText(props.category)}`;
+    fetchNews();
+    //eslint-disable-next-line
+  }, []);
+
+  const fetchMoreData = async () => {
+    const url = `https://newsapi.org/v2/top-headlines?country=${
+      props.country
+    }&category=${props.category}&apiKey=${props.api}&page=${
+      page + 1
+    }&pagesize=${props.pageSize}`;
+    setpage(page + 1);
+    let data = await fetch(url);
+    // console.log(data)
+    let parsedData = await data.json();
+    // console.log(parsedData);
+    setarticles(articles.concat(parsedData.articles));
+    settotalResults(totalResults);
+  };
+
+  return (
+    <>
+      <h1
+        className="text-center"
+        style={{ margin: "35px 0px", marginTop: "90px" }}
+      >
+        News App bitch
+      </h1>
+      {loading && <Spinner />}
+      <InfiniteScroll
+        dataLength={articles.length}
+        next={fetchMoreData}
+        hasMore={articles.length !== totalResults}
+        loader={<Spinner />}
+      >
+        <div className="container">
+          <div className="row">
+            {articles.map((element) => {
+              return (
+                <div className="col-md-4" key={element.url}>
+                  <NewsItem
+                    title={element.title}
+                    description={element.description}
+                    imageurl={element.urlToImage}
+                    newsurl={element.url}
+                    author={element.author}
+                    date={element.publishedAt}
+                  />
+                </div>
+              );
+            })}
           </div>
-        </InfiniteScroll>
-      </>
-    );
-  }
+        </div>
+      </InfiniteScroll>
+    </>
+  );
 }
