@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 
 export default class App extends Component {
+  api= process.env.REACT_APP_NEWS_API;
+
   state = {
     progress: 0,
   };
@@ -25,7 +27,7 @@ export default class App extends Component {
               element={
                 <>
                   <NavBar />
-                  <LoadingBar color="#f11946" progress={this.state.progress} />
+                  <LoadingBar height={5} color="#f11946" progress={this.state.progress} />
                 </>
               }
             >
@@ -37,6 +39,7 @@ export default class App extends Component {
                     key="general"
                     pageSize={6}
                     country="in"
+                    api={this.api}
                     category="general"
                   />
                 }
@@ -49,6 +52,7 @@ export default class App extends Component {
                     key="Business"
                     pageSize={6}
                     country="in"
+                    api={this.api}
                     category="Business"
                   />
                 }
@@ -61,6 +65,7 @@ export default class App extends Component {
                     key="Entertainment"
                     pageSize={6}
                     country="in"
+                    api={this.api}
                     category="Entertainment"
                   />
                 }
@@ -73,6 +78,7 @@ export default class App extends Component {
                     key="General"
                     pageSize={6}
                     country="in"
+                    api={this.api}
                     category="General"
                   />
                 }
@@ -85,6 +91,7 @@ export default class App extends Component {
                     key="Health"
                     pageSize={6}
                     country="in"
+                    api={this.api}
                     category="Health"
                   />
                 }
@@ -97,6 +104,7 @@ export default class App extends Component {
                     key="Sports"
                     pageSize={6}
                     country="in"
+                    api={this.api}
                     category="Sports"
                   />
                 }
@@ -109,6 +117,7 @@ export default class App extends Component {
                     key="Science"
                     pageSize={6}
                     country="in"
+                    api={this.api}
                     category="Science"
                   />
                 }
@@ -121,6 +130,7 @@ export default class App extends Component {
                     key="Technology"
                     pageSize={6}
                     country="in"
+                    api={this.api}
                     category="Technology"
                   />
                 }
@@ -133,6 +143,7 @@ export default class App extends Component {
                     key="ContactMe"
                     pageSize={6}
                     country="in"
+                    api={this.api}
                     category="ContactMe"
                   />
                 }
