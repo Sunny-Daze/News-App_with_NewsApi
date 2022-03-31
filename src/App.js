@@ -64,7 +64,7 @@ export default function App(){
                   />
                 }
               />
-              <Route
+              {/* <Route
                 path="General"
                 element={
                   <News
@@ -76,7 +76,7 @@ export default function App(){
                     category="General"
                   />
                 }
-              />
+              /> */}
               <Route
                 path="Health"
                 element={
