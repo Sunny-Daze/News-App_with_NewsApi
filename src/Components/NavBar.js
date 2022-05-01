@@ -3,10 +3,19 @@ import { Outlet, Link } from "react-router-dom";
 export default function NavBar() {
   return (
     <>
-      <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <nav
+        style={{
+          backgroundColor: "#FF3CAC",
+          backgroundImage:
+            "linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%)",
+            "color":"black",
+            "fontWeight":"10px"
+        }}
+        className="navbar fixed-top navbar-expand-lg navbar-light"
+      >
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            Navbar
+            News Mongo
           </Link>
           <button
             className="navbar-toggler"
@@ -38,11 +47,6 @@ export default function NavBar() {
                   to="/Entertainment"
                 >
                   Entertainment
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/General">
-                  General
                 </Link>
               </li>
               <li className="nav-item">

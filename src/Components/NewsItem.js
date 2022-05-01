@@ -4,7 +4,9 @@ export default function NewsItem(props) {
   let { title, description, imageurl, newsurl, author, date } = props;
   return (
     <div className="my-3">
-      <div className="card">
+      <div style={{ "backgroundColor": "#21D4FD",
+"backgroundImage": "linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)"
+ }} className="card">
         <img
           src={
             imageurl

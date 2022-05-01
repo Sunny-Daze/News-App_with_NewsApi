@@ -52,12 +52,12 @@ export default function News(props) {
 
   return (
     <>
-      <h1
+      <h3
         className="text-center"
-        style={{ margin: "35px 0px", marginTop: "90px" }}
+        style={{ marginBottom: "25px", marginTop: "70px" }}
       >
-        News App bitch
-      </h1>
+        News Mongo
+      </h3>
       {loading && <Spinner />}
       <InfiniteScroll
         dataLength={articles.length}
