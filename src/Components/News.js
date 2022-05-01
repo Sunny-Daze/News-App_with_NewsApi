@@ -51,17 +51,19 @@ export default function News(props) {
     };
 
     return ( <
-        >
-        <
-        h3 className = "text-center"
-        style = {
-            { marginBottom: "25px", marginTop: "70px" } } >
-        News Mongo <
-        /h3> { loading && < Spinner / > } <
+            >
+            <
+            h3 className = "text-center"
+            style = {
+                { marginBottom: "25px", marginTop: "70px" }
+            } >
+            News Mongo <
+            /h3> { loading && < Spinner / >
+        } <
         InfiniteScroll dataLength = { articles.length }
-        next = { fetchMoreData }
-        hasMore = { articles.length !== totalResults }
-        loader = { < Spinner / > } >
+    next = { fetchMoreData }
+    hasMore = { articles.length !== totalResults }
+    loader = { < Spinner / > } >
         <
         div className = "container" >
         <
@@ -77,14 +79,14 @@ export default function News(props) {
                     newsurl = { element.url }
                     author = { element.author }
                     date = { element.publishedAt }
-                    /> <
-                    /div>
+                    /> < /
+                    div >
                 );
             })
         } <
-        /div> <
-        /div> <
-        /InfiniteScroll> <
-        />
-    );
+        /div> < /
+        div > <
+        /InfiniteScroll> < /
+        >
+);
 }
