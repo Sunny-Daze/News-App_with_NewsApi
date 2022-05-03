@@ -17,7 +17,12 @@ export default function News(props) {
         props.setProgress(10);
         const url = `http://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.api}&page=1&pagesize=${props.pageSize}`;
         setloading(true);
-        let data = await fetch(url);
+        let data = await fetch(url, {
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": true
+            },
+        });
         props.setProgress(50);
         // console.log(data)
         let parsedData = await data.json();
@@ -36,11 +41,9 @@ export default function News(props) {
     }, []);
 
     const fetchMoreData = async() => {
-        const url = `https://newsapi.org/v2/top-headlines?country=${
-      props.country
-    }&category=${props.category}&apiKey=${props.api}&page=${
-      page + 1
-    }&pagesize=${props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=${props.country
+            }&category=${props.category}&apiKey=${props.api}&page=${page + 1
+            }&pagesize=${props.pageSize}`;
         setpage(page + 1);
         let data = await fetch(url);
         // console.log(data)
@@ -58,7 +61,7 @@ export default function News(props) {
                 { marginBottom: "25px", marginTop: "70px" }
             } >
             News Mongo <
-            /h3> { loading && < Spinner / >
+            /h3> {loading && < Spinner / >
         } <
         InfiniteScroll dataLength = { articles.length }
     next = { fetchMoreData }
@@ -85,8 +88,7 @@ export default function News(props) {
             })
         } <
         /div> < /
-        div > <
-        /InfiniteScroll> < /
-        >
+    div > <
+        /InfiniteScroll> < / >
 );
 }
